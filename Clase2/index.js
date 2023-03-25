@@ -1,4 +1,4 @@
-const http = require("http");
+const http = require("http"); //require trae la propiedad http
 
 const HOST = "localhost";
 const PORT = 8000;
@@ -10,8 +10,8 @@ const writeHTMLResponse = (res, htmlCode) => {
   //res.end("Este es mi primer servidor"); //Creo instancia del servidor
 };
 
-const server = http.createServer((req, res) => {
-  const url = req.url;
+const server = http.createServer((req, res) => {//req esta escuchando, dependiendo de la url que le llegue
+  const url = req.url; //segun lo que llega lo envia al if
   console.log("URL es: ", url);
 
   if (url === "/other") {
