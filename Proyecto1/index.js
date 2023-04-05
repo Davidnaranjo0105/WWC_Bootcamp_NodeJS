@@ -1,5 +1,5 @@
 'use strict'; 
-
+const fs = require('fs');
 const express = require("express"); 
 const PORT = 8000;
 const app = express(); 
@@ -38,6 +38,11 @@ const products = [
     res.send("Pagina principal"); //Texto plano de respuesta
 });
 
+fs.writeFile('lista-productos.txt', JSON.stringify(products), (err) => {
+  if (err) throw err;
+  console.log('La lista de productos se ha almacenado en el archivo lista-productos.txt');
+});
+
 app.get(urlPath,(req, res)=>{
     res.json(products); // Devuelve toda la lista de productos
 });
@@ -47,6 +52,10 @@ app.get(urlPath,(req, res)=>{
     const product = {id,name,description,price,available_units,category};
     products.push(product); //creado con su identificador único asignado.                         
     res.json(products);
+});
+fs.writeFile('lista-productos.txt', JSON.stringify(products), { flag: 'a+' }, function (err) {
+  if (err) throw err;
+  console.log('Se escribió en el archivo');
 });
 
  app.patch("/api/v1/products/:id",(req,res)=>{ // Modificar un producto y devolverlo
