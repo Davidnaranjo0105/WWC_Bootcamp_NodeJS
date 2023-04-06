@@ -1,1 +1,0 @@
-[{"id":1,"name":"Chunky salmón y cordero","description":"Descripcion","price":80000,"available_units":3,"category":"Perros"},{"id":2,"name":"Chunky pollo","description":"Descripcion","price":90000,"available_units":7,"category":"Perros"}]
