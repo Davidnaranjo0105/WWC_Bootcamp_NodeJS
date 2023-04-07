@@ -33,8 +33,6 @@ let products = [
   ];
 
   app.get('/', (req,res) => {
-    //res.query;
-    //console.log(res.query);
     res.send("Pagina principal"); //Texto plano de respuesta
 });
 
@@ -58,38 +56,33 @@ app.get(urlPath,(req, res)=>{
     crearTxt(products);
 });
 
- app.patch("/api/v1/products/:id",(req,res)=>{ // Modificar un producto y devolverlo
-     const {id} = req.params;
-    const productoModificado = req.body;
-    console.log("req.body ", req.body);
-    console.log("products ", products);
-    const productoEncontrado = products.find(producto => producto.id === id);
-  // console.log("encontrado "+productoEncontrado);
-  // console.log("modificado "+productoModificado);
-     if (productoEncontrado) {
-      // for (let key in productoModificado) {
-      //   productoEncontrado[key] = productoModificado[key];
-      // }
-      // res.json(productoEncontrado);
-      // crearTxt(products);
-    } else {
-      res.status(404).send('Producto no encontrado');
-    } 
+app.patch(urlPath + ':id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const product = req.body;
+  const index = products.findIndex(product => product.id === id);
+
+  if (index !== -1) {
+    products[index]= product;
+    res.json(product);
+    crearTxt(products);
+  } else {
+    res.status(404).send('Producto no encontrado');
+  }
 });
 
-app.delete("/api/v1/products/:id",(req,res)=>{ // Eliminar producto devolver: “producto {nombreDeProducto} fue eliminado” 
- const {id} = req.params;
- console.log(id);
-  const indiceProducto = products.findIndex(producto => producto.id === id);
-console.log(indiceProducto);
-   if (indiceProducto) {
-    products.splice(indiceProducto);
+app.delete(urlPath + ':id',(req,res)=>{ // Eliminar producto devolver: “producto {nombreDeProducto} fue eliminado” 
+  const id = parseInt(req.params.id);
+  const index = products.findIndex(product => product.id === id);
+
+  if (index !== -1) {
+    products.splice(index, 1);
     res.send('Producto eliminado correctamente');
     crearTxt(products);
-   }
+   } else {
+    res.status(404).send('Producto no encontrado');
+  }
 });  
 
 app.listen(PORT, () => {
     console.log(`Listening in http://localhost:${PORT}${urlPath}`);
 })
-    
