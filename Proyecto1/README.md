@@ -20,6 +20,6 @@ Internamente los productos se guardan en un archivo .txt para asegurar la persis
 
 ## Documentación API y Frameworks
 
-*[Node.js](https://nodejs.org/es/docs)
-*[Javascript](https://devdocs.io/javascript/)
-*[Fs](https://kinsta.com/es/base-de-conocimiento/nodejs-fs/)
+* [Node.js](https://nodejs.org/es/docs)
+* [Javascript](https://devdocs.io/javascript/)
+* [Fs](https://kinsta.com/es/base-de-conocimiento/nodejs-fs/)
