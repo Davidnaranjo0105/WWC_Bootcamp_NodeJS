@@ -105,7 +105,7 @@ app.use((err, req, res, next) => {
     res.status(400).json({message: 'Los campos id, name, description, price, available_units y category son obligatorios'});
   } else {
     console.error(err);
-    res.status(500).json({message: 'Hubo un error en el servidor'});
+    res.status(500).json({message: 'Ocurrió un error en el servidor'});
   }
 });
 
