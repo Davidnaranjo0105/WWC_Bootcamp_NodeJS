@@ -15,7 +15,6 @@ Internamente los productos se guardan en un archivo .txt para asegurar la persis
 - Descargar node.js preferible la versión 18 LTS
 - Descargar el proyecto desde el repositorio o clonarlo de https://github.com/MafeJh/Clase2_NodeJS.git
 - Ingresar a Proyecto1 desde VSC
-- En la terminal del proyecto ejecutar `npm i`
 - Ejecutar la API con `npm run dev`
 
 ## Documentación API y Frameworks
