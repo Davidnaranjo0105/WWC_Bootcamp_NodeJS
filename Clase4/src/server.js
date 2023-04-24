@@ -1,5 +1,5 @@
 require("dotenv").config();
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // Librería de node para escribir consultas para base de datos de MongoDB
 
 const express = require("express"),
   PORT = process.env.PORT || 3000;
@@ -21,7 +21,7 @@ const start = async () => {
       console.log(`Aplicacion corriendo en el puerto: `, PORT);
     });
   } catch (e) {
-    console.error(e);
+    console.error('El error de conexión es: ' + e);
     process.exit(1); // Forzar el cierre de algo en JS
   }
 };
