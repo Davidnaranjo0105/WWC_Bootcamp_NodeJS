@@ -17,9 +17,9 @@ Luego de instalado, abrimos Compass, y para agregar la base de datos le damos en
 
 Ahora se agrega al código los métodos a trabajar:
 
-1. Para seleccionar un elemento específico de la colección y mostrarlo:
-2. Editar uno d elos elementos de la colección.
-3. Eliminar uno de los elementos de la colección.
+1. Para seleccionar un elemento específico de la colección y mostrarlo: .find();
+2. Editar uno de los elementos de la colección: .findByIdAndUpdate();
+3. Eliminar uno de los elementos de la colección: .findByIdAndDelete();
 
 
 
