@@ -4,7 +4,7 @@
 
 ## Primeros pasos
 Se interactua con la base de datos de MongoDB, utilizando Atlas y MongoDB Compass.
-Para iniciar se debe tener instalado nodejs * **Node.js**(https://nodejs.org/es/docs)
+Para iniciar se debe tener instalado nodejs * **Node.js** https://nodejs.org/es/docs
 Luego se crea una carpeta dónde alojaremos el proyecto y se ingresa el siguiente comando en la terminal: **npm init -y**, luego **npm i**, y por último se realiza la instalación del dotenv y mongoose: **npm install dotenv mongoose**.
 
 Se crea una cuenta en MongoDB Atlas, damos click en Database -> Create -> shared -> Select: Aws, N. Virginia -> Create Cluster.

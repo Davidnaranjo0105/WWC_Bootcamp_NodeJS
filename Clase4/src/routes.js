@@ -1,66 +1,53 @@
 const {Router} = require("express");
-const { Product } = require("./models");
-
 const routes = new Router;
+const Product = require("./models")
 
-routes.get("/health", (_, res) => res.send("check"));
+// routes.get("/health", (_, res) => res.send("check"));
 //estudiar heatlh check
 
 const BASE = "/api/v1/products";
 
 routes.get(BASE, async(req,res)=>{
-    const products = await Product.find();
-    res.json(products);
+    try {
+        const products = await Product.find();
+        res.status(200).json(products);
+        console.log(products);
+    } catch (error) {
+        res.status(500).json(error);
+    } 
+
 });
 
-// Para mostrar todos los productos
-const showList = async ()=>{
-    const products = await exports.Product.find();
-    console.log(products);
-}
-
 // // Crear Producto
-// const create = async()=>{
-//     const product = new exports.Product({
-//         id: '31',
-//         name: 'A magical key',
-//         description: 'It is use by stelar wizards',
-//         availableUnits: 2,
-//         price: 12,
-//         category: 'Magical items'
-//     })
-//     const result = await exports.Product.save();
-//     console.log(result);
-// }
+ routes.post(BASE, async(req,res)=>{
+    try {
+        const product = await new Product(req.body).save();
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
 // // Actualizar
-// const updateList = async (id)=>{
-//     const product = await exports.Product.updateOne({_id:id},
-//         {
-//             $set:{
-//                 name: 'A magical key MODIFIED',
-//                 description: 'It is use by stelar wizards MODIFIED',
-//             }
-//         })
-// }
+ routes.patch(`${BASE}/:id`, async (req, res)=>{
+    try {
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body, {returnDocument: 'after'});
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
 // // Eliminar
-// const deleteProduct = async (id)=>{
-//     const product = await exports.Product.deleteOne({_id:id})
-//     console.log('El elemento eliminado es: ', product)
-// }
+routes.delete(`${BASE}/:id`,async (req,res)=>{
+try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    res.status(200).json(product);
+    console.log('El elemento eliminado es: ', product)
+} catch (error) {
+    res.status(500).json(error);
+}
+});
 
-// LLamar los procedimientos
 
-// // Motrar todo
-showList();
-
-// // Crear
-// create();
-
-// // Actualizar
-// updateList('6445907efc980e9ca021132a');
-
-// // Eliminar
-// deleteProduct('25');
 module.exports = routes;
